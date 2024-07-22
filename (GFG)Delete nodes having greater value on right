@@ -1,0 +1,24 @@
+Node *compute(Node *head)
+    {
+        // your code goes here
+        if(head==NULL || head->next==NULL) return head;
+        Node* prev=NULL;
+        Node* move=head;
+        while(move!=NULL){
+            Node* temp=move->next;
+            while(temp!=NULL && temp->data<=move->data) temp=temp->next;
+            if(temp==NULL) {
+                prev=move;
+                move=move->next;
+            }
+            else if(temp!=NULL && move==head){
+                move=move->next;
+                head=move;
+            }
+            else if(temp!=NULL && move!=head){
+                prev->next=move->next;
+                move=prev->next;
+            }
+        }
+        return head;
+    }
