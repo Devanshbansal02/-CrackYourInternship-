@@ -1,0 +1,71 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector<string> binaryTreePaths(TreeNode* root) {
+        vector<string> ans;
+        if(!root) return ans;
+        string path = to_string(root->val);
+        if(!root->left && !root->right){
+            ans.push_back(path);
+            return ans;
+        }
+        if(root->left){
+            vector<string> temp=binaryTreePaths(root->left);
+            for(auto strs:temp){
+                ans.push_back(path + "->" + strs);
+            }
+        }
+        if(root->right){
+            vector<string> temp=binaryTreePaths(root->right);
+            for(auto strs:temp){
+                ans.push_back(path + "->" + strs);
+            }
+        }
+        return ans;
+    }
+};/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector<string> binaryTreePaths(TreeNode* root) {
+        vector<string> ans;
+        if(!root) return ans;
+        string path = to_string(root->val);
+        if(!root->left && !root->right){
+            ans.push_back(path);
+            return ans;
+        }
+        if(root->left){
+            vector<string> temp=binaryTreePaths(root->left);
+            for(auto strs:temp){
+                ans.push_back(path + "->" + strs);
+            }
+        }
+        if(root->right){
+            vector<string> temp=binaryTreePaths(root->right);
+            for(auto strs:temp){
+                ans.push_back(path + "->" + strs);
+            }
+        }
+        return ans;
+    }
+};
