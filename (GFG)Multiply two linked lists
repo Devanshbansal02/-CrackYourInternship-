@@ -1,0 +1,19 @@
+class solution {
+  public:
+    long long multiplyTwoLists(Node *first, Node *second) {
+        // code here
+        Node* temp=first;
+        long long a1=0, a2=0, ans=0, mod=1000000007;
+        while(temp!=NULL){
+            a1= (a1*10 + temp->data)%mod;
+            temp=temp->next;
+        }
+        temp=second;
+        while(temp!=NULL){
+            a2= (a2*10 + temp->data)%mod;
+            temp=temp->next;
+        }
+        ans=(a1*a2)%mod;
+        return ans;
+    }
+};
