@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int f(string s, int ind, vector<int>& dp){
+        if(ind>=s.length()) return 1;
+        if(s[ind]=='0') return 0;
+        if(dp[ind]!=-1) return dp[ind];
+        int result = f(s, ind+1, dp);
+        if(ind<s.length()-1 && (s[ind]=='1' || (s[ind]=='2' && s[ind+1]<='6'))){
+            result+=f(s, ind+2, dp);
+        }
+        dp[ind]=result;
+        return result;
+    }
+
+    int numDecodings(string s) {
+        if(s.empty() || s[0]=='0') return 0;
+        int n=s.length();
+        vector<int> dp(n+1,-1);
+
+         int ans=f(s, 0, dp);
+         return ans;
+    }
+};
