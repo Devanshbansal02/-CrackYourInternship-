@@ -1,0 +1,21 @@
+class Solution {
+public:
+    void f(vector<int>& nums, int start, vector<int>& path, set<vector<int>>& result){
+        result.insert(path);
+        for(int i = start; i < nums.size(); ++i){
+            path.push_back(nums[i]);
+            f(nums, i + 1, path, result);
+            path.pop_back();
+        }
+    }
+
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        set<vector<int>> result;
+        vector<int> path;
+        sort(nums.begin(), nums.end()); 
+        f(nums, 0, path, result);
+        
+        vector<vector<int>> ans(result.begin(), result.end()); 
+        return ans;
+    }
+};
